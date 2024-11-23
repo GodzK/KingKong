@@ -3,6 +3,7 @@ class BL:
         self.user_data = {
         }
         self.currentid = ''
+        
         self.course_data = {
             "Discrete": [671305, 516712],
             "Ux-Ui": [671304, 671300],
@@ -54,7 +55,14 @@ class BL:
 
     def my_course(self, user_id):
         return self.filter_mycourse(user_id)
-
+    def checkid(self,userid):
+        if userid == "":
+                raise ValueError
+        if 67130500000 > userid < 67130500200 :
+                raise ValueError
+    def checkname(self,username):
+        if username.isdigit() or username == "":
+                raise ValueError
 
 class UI:
     def __init__(self, bl_instance):
@@ -145,9 +153,10 @@ class UI:
                         self.bl.enroll("Discrete" , currid )
                     case 2:
                         print("You Choose Ux-Ui")
+                        self.bl.enroll("Ux-Ui" , currid )
                     case 3:
                         print("You Choose Design-thinking")
-                        self.login_menu()
+                        self.bl.enroll("DesignThinking" , currid )
                         return
                     case 4:
                         self.mainmenu()
@@ -174,13 +183,19 @@ class UI:
     def register_user(self):
         try:
             user_id = int(input("Enter a new user ID: "))
+            self.bl.checkid(user_id)
             user_name = input("Enter your name: ")
+            self.bl.checkname(user_name)
+            
+            
             if self.bl.register_user(user_id, user_name):
                 print("Registration successful!")
             else:
                 print("User ID already exists. Please try a different one.")
         except ValueError:
+            
             print("Invalid input, please enter a valid user ID.")
+            self.register_user()
 
 
 def main():
