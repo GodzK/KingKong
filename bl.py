@@ -18,11 +18,15 @@ class BL:
         self.currentid = ''
 
     def enroll(self, course, user_id):
+        if self.duplicate_enroll_corse(course,user_id):
+            raise TypeError
         self.course_data[course].append(user_id)
         print(self.course_data)
     
-    def duplicate_enroll_corse(self, course_enroll):
-        if course_enroll in self.course_data[course_enroll]:
+    def duplicate_enroll_corse(self,course, id_user):
+        if id_user in self.course_data[course]:
+            return True
+        
 
 
     def get_user_data(self):

@@ -90,6 +90,8 @@ class UI:
                     print("Invalid choice!")
         except ValueError:
             print("Invalid input, please enter a number.")
+        except TypeError:
+            print("You already enrolled this course")
 
     def my_course(self, user_id):
         my_courses = self.bl.my_course(user_id)
