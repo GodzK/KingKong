@@ -14,6 +14,9 @@ class bl:
             raise ValueError
     def showmovie(self):
         print(self.movie_data) 
+    
+    def __eq__(self, value: object) -> bool:
+        pass
 
     def addmovietouser(self, moviepick):
         movie = self.movie_data["movie"][moviepick]
