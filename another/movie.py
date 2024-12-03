@@ -1,5 +1,6 @@
 class bl:
     def __init__(self):
+        #Private Attribute
         self.user_data = {"moviewatch" : []}
         self.movie_data = {"movie" : ["pirate of the carebian" , "iron man 3 " , "avengers"]}
     def adduser(self,userregis,regispass):
@@ -82,27 +83,12 @@ class ui:
         print(f"สวัสดี{userlogin} มาเริ่มดู กัน")
         print(self.bl.user_data["moviewatch"])
 
-                
-                    
-                    
-        
-
-    
-        
-    
-
-
-
-
-
-
-
 def main():
     blinstance = bl()
     uiinstance = ui(blinstance)
     uiinstance.mainpage()
 
 
-
-main()  
+if  __name__ == "__main__":
+    main()  
         
